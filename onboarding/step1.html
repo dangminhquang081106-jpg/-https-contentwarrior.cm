@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Onboarding — Stap 1 | Contact & Bedrijf</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <img
+            class="logo-img"
+            src="../assets/logo.svg"
+            alt="Content Warrior logo"
+          />
+          <span class="logo-text">Content Warrior</span>
+        </div>
+        <nav class="nav"><a href="../index.html">Terug naar site</a></nav>
+      </div>
+    </header>
+
+    <main class="onboard-wrap">
+      <div class="progress"><i style="width: 0%"></i></div>
+      <div class="center small-muted progress-text">0%</div>
+
+      <div class="form-card">
+        <h2>Contact & Bedrijf</h2>
+        <p class="small-muted">Vertel ons over jezelf en je organisatie</p>
+
+        <div class="field">
+          <label>Naam</label>
+          <input name="name" type="text" placeholder="Voor- en achternaam" />
+        </div>
+
+        <div class="field">
+          <label>Bedrijfsnaam</label>
+          <input name="company" type="text" placeholder="Organisatie" />
+        </div>
+
+        <div class="field">
+          <label>E-mail</label>
+          <input name="email" type="email" placeholder="naam@bedrijf.nl" />
+        </div>
+
+        <div class="field">
+          <label>Telefoonnummer</label>
+          <input name="phone" type="tel" placeholder="+31 6 ..." />
+        </div>
+
+        <div class="field">
+          <label>Branche</label>
+          <select name="industry">
+            <option value="">Kies...</option>
+            <option>Technologie en software</option>
+            <option>E-commerce</option>
+            <option>Financiële dienstverlening</option>
+            <option>Gezondheidszorg</option>
+          </select>
+        </div>
+
+        <div class="footer-actions">
+          <a class="btn btn-primary" id="nextBtn" href="#">Volgende</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/onboarding.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        Onboarding.restore && Onboarding.restore();
+        Onboarding.setProgress && Onboarding.setProgress(1);
+        document.getElementById("nextBtn").addEventListener("click", (e) => {
+          e.preventDefault();
+          Onboarding.saveForm && Onboarding.saveForm();
+          location.href = "step2.html";
+        });
+      });
+    </script>
+  </body>
+</html>

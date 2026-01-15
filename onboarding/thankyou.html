@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bedankt — Onboarding voltooid</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-img" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              fill="none"
+              width="36"
+              height="36"
+            >
+              <rect width="64" height="64" rx="12" fill="#003f8a" />
+              <path
+                d="M16 36c4-8 12-12 20-12s16 4 20 12v6H16v-6z"
+                fill="#fff"
+                opacity="0.95"
+              />
+              <path
+                d="M24 28c0-4 8-8 8-8s8 4 8 8"
+                stroke="#6fd6ff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="logo-text">Content Warrior</span>
+        </div>
+        <nav class="nav"><a href="../index.html">Terug naar site</a></nav>
+      </div>
+    </header>
+
+    <main class="onboard-wrap center">
+      <div class="form-card" style="max-width: 760px">
+        <div
+          style="
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          <div
+            style="
+              width: 72px;
+              height: 72px;
+              border-radius: 18px;
+              background: linear-gradient(
+                180deg,
+                var(--brand-secondary),
+                var(--button-dark)
+              );
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+            "
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M20 6L9 17l-5-5"
+                stroke="#fff"
+                stroke-width="2.2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <div>
+            <h2 style="margin: 0.1rem 0 0; font-size: 1.6rem">
+              Bedankt — we hebben je informatie ontvangen
+            </h2>
+          </div>
+        </div>
+
+        <div
+          style="
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 1rem;
+            align-items: start;
+          "
+        >
+          <div>
+            <h3 style="margin-top: 0">Wat gebeurt er nu?</h3>
+            <ul style="margin: 0; padding-left: 1.05rem; color: var(--muted)">
+              <li>
+                We controleren je informatie en bereiden een korte intake voor.
+              </li>
+              <li>Je ontvangt binnen 48 uur een mail met mogelijke tijden.</li>
+              <li>
+                Voorbereidingen voor je contentstrategie starten na de intake.
+              </li>
+            </ul>
+            <p style="margin-top: 1rem; color: var(--muted)">
+              Heb je direct vragen? Mail ons op
+              <strong style="color: var(--text)">hi@contentwarrior.nl</strong>
+              of bel
+              <strong style="color: var(--text)">+31 20 123 4567</strong>.
+            </p>
+          </div>
+
+          <div
+            style="
+              background: var(--card);
+              padding: 1rem;
+              border-radius: 10px;
+              border: 1px solid rgba(255, 255, 255, 0.03);
+              text-align: center;
+            "
+          >
+            <div
+              style="
+                font-weight: 700;
+                color: var(--brand-secondary);
+                margin-bottom: 0.6rem;
+              "
+            >
+              Onboarding status
+            </div>
+            <div class="progress" aria-hidden="true">
+              <i style="width: 100%"></i>
+            </div>
+            <div style="margin-top: 0.6rem; color: var(--muted)">
+              Stap 6 van 6 voltooid
+            </div>
+            <div style="margin-top: 1rem">
+              <a class="btn btn-primary" href="../index.html"
+                >Terug naar de website</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="center" style="margin-top: 1.25rem; color: var(--muted)">
+          <small
+            >Je gegevens worden vertrouwelijk behandeld volgens onze
+            privacyregels.</small
+          >
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/onboarding.js"></script>
+    <script src="../js/confetti.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        Onboarding.setProgress && Onboarding.setProgress(7);
+      });
+    </script>
+  </body>
+</html>

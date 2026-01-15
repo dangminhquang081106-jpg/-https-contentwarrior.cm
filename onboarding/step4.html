@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Onboarding — Stap 4 | Doelgroep & Persona</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <img
+            class="logo-img"
+            src="../assets/logo.svg"
+            alt="Content Warrior logo"
+          />
+          <span class="logo-text">Content Warrior</span>
+        </div>
+        <nav class="nav"><a href="step3.html">Terug</a></nav>
+      </div>
+    </header>
+
+    <main class="onboard-wrap">
+      <div class="progress"><i style="width: 0%"></i></div>
+      <div class="center small-muted progress-text">0%</div>
+
+      <div class="form-card">
+        <h2>Doelgroep & Persona</h2>
+        <p class="small-muted">Wie wil je bereiken met je content?</p>
+
+        <div class="field">
+          <label>Doelgroepomschrijving</label>
+          <input
+            name="audience_desc"
+            type="text"
+            placeholder="Omschrijf je doelgroep"
+          />
+        </div>
+
+        <div class="field">
+          <label>Leeftijd</label>
+          <div class="options">
+            <label class="option"
+              ><input type="checkbox" name="age_1" /> 1-13</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="age_2" /> 14-29</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="age_3" /> 30-45</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="age_4" /> 46-61</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="age_5" /> 62-80</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="age_6" /> 81-98</label
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Interesses</label>
+          <input
+            name="interests"
+            type="text"
+            placeholder="Bijv. security, growth, design"
+          />
+        </div>
+
+        <div class="field">
+          <label>Functie</label>
+          <input
+            name="role"
+            type="text"
+            placeholder="Bijv. Marketing Manager"
+          />
+        </div>
+
+        <div class="field">
+          <label>Nog meer te vertellen over je doelgroep?</label>
+          <textarea name="audience_more" rows="3"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Welke problemen of uitdagingen ervaart je doelgroep?</label>
+          <textarea name="audience_challenges" rows="3"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Gewenste benadering (meerdere opties mogelijk)</label>
+          <div class="options">
+            <label class="option"
+              ><input type="checkbox" name="approach_advisory" />
+              Adviserend</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="approach_commercial" />
+              Commercieel</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="approach_educational" />
+              Educatief</label
+            >
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <a class="btn btn-outline" href="step3.html">Terug</a>
+          <a class="btn btn-primary" id="nextBtn" href="#">Volgende</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/onboarding.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        Onboarding.restore && Onboarding.restore();
+        Onboarding.setProgress && Onboarding.setProgress(4);
+        document.getElementById("nextBtn").addEventListener("click", (e) => {
+          e.preventDefault();
+          Onboarding.saveForm && Onboarding.saveForm();
+          location.href = "step5.html";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Onboarding — Stap 2 | Product & Merk</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <img
+            class="logo-img"
+            src="../assets/logo.svg"
+            alt="Content Warrior logo"
+          />
+          <span class="logo-text">Content Warrior</span>
+        </div>
+        <nav class="nav"><a href="step1.html">Terug</a></nav>
+      </div>
+    </header>
+
+    <main class="onboard-wrap">
+      <div class="progress"><i style="width: 0%"></i></div>
+      <div class="center small-muted progress-text">0%</div>
+
+      <div class="form-card">
+        <h2>Product & Merk</h2>
+        <p class="small-muted">Vertel ons over je aanbod en merkidentiteit</p>
+
+        <div class="field">
+          <label>Belangrijkste product of dienst</label>
+          <input
+            name="product"
+            type="text"
+            placeholder="Omschrijf je belangrijkste aanbod"
+          />
+        </div>
+
+        <div class="field">
+          <label
+            ><strong
+              >We hebben de kleur van je merk nodig zodat we de gepaste content
+              kunnen maken op je stijl</strong
+            ></label
+          >
+          <div class="color-row">
+            <div class="color-field">
+              <div
+                id="primary_color-swatch"
+                class="color-swatch"
+                aria-hidden="true"
+              ></div>
+              <div class="color-meta">
+                <small class="small-muted">Primair color</small>
+                <strong id="primary_color-hex">#111111</strong>
+              </div>
+              <input
+                name="primary_color"
+                id="primary_color"
+                type="color"
+                value="#111111"
+                aria-label="Primair color picker"
+              />
+            </div>
+
+            <div class="color-field">
+              <div
+                id="secondary_color-swatch"
+                class="color-swatch"
+                aria-hidden="true"
+              ></div>
+              <div class="color-meta">
+                <small class="small-muted">Secondair color</small>
+                <strong id="secondary_color-hex">#39AFFF</strong>
+              </div>
+              <input
+                name="secondary_color"
+                id="secondary_color"
+                type="color"
+                value="#39AFFF"
+                aria-label="Secondair color picker"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <a class="btn btn-outline" href="step1.html">Terug</a>
+          <a class="btn btn-primary" id="nextBtn" href="#">Volgende</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/onboarding.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        Onboarding.restore && Onboarding.restore();
+        Onboarding.setProgress && Onboarding.setProgress(2);
+        // color swatch preview helper
+        function updateSwatch(name) {
+          const inp = document.querySelector('[name="' + name + '"]');
+          const sw = document.getElementById(name + "-swatch");
+          const hex = document.getElementById(name + "-hex");
+          if (!inp || !sw || !hex) return;
+          sw.style.background = inp.value;
+          hex.textContent = inp.value.toUpperCase();
+        }
+
+        // initialize previews
+        ["primary_color", "secondary_color"].forEach((n) => {
+          const el = document.querySelector('[name="' + n + '"]');
+          if (el) {
+            el.addEventListener("input", () => updateSwatch(n));
+          }
+          updateSwatch(n);
+        });
+
+        document.getElementById("nextBtn").addEventListener("click", (e) => {
+          e.preventDefault();
+          Onboarding.saveForm && Onboarding.saveForm();
+          location.href = "step3.html";
+        });
+      });
+    </script>
+  </body>
+</html>

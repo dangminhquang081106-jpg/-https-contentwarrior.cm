@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Onboarding — Stap 3 | Schrijfstijl</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <img
+            class="logo-img"
+            src="../assets/logo.svg"
+            alt="Content Warrior logo"
+          />
+          <span class="logo-text">Content Warrior</span>
+        </div>
+        <nav class="nav"><a href="step2.html">Terug</a></nav>
+      </div>
+    </header>
+
+    <main class="onboard-wrap">
+      <div class="progress"><i style="width: 0%"></i></div>
+      <div class="center small-muted progress-text">0%</div>
+
+      <div class="form-card">
+        <h2>Schrijfstijl</h2>
+        <p class="small-muted">Hoe moeten we communiceren namens je merk?</p>
+
+        <div class="field">
+          <label>Tone of voice</label>
+          <div class="options">
+            <label class="option"
+              ><input type="checkbox" name="tone_professional" /> professioneel
+              & gezaghebbend</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="tone_friendly" /> vriendelijk &
+              informeel</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="tone_educational" /> educatief &
+              deskundig</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="tone_warm" /> warm &
+              empathisch</label
+            >
+            <label class="option"
+              ><input type="checkbox" name="tone_bold" /> gedurfd &
+              energiek</label
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Leesniveau</label>
+          <div class="options">
+            <label class="option"
+              ><input type="radio" name="reading_level" value="simpel" />
+              simpel</label
+            >
+            <label class="option"
+              ><input type="radio" name="reading_level" value="conversatie" />
+              conversatie-stijl</label
+            >
+            <label class="option"
+              ><input type="radio" name="reading_level" value="gevorderd" />
+              gevorderd</label
+            >
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Perspectief</label>
+          <div class="options">
+            <label class="option"
+              ><input type="radio" name="perspective" value="jij" />
+              jij/jouw</label
+            >
+            <label class="option"
+              ><input type="radio" name="perspective" value="wij" />
+              wij/ons</label
+            >
+            <label class="option"
+              ><input type="radio" name="perspective" value="algemeen" />
+              algemeen/zij</label
+            >
+          </div>
+        </div>
+
+        <div class="footer-actions">
+          <a class="btn btn-outline" href="step2.html">Terug</a>
+          <a class="btn btn-primary" id="nextBtn" href="#">Volgende</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/onboarding.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        Onboarding.restore && Onboarding.restore();
+        Onboarding.setProgress && Onboarding.setProgress(3);
+        document.getElementById("nextBtn").addEventListener("click", (e) => {
+          e.preventDefault();
+          Onboarding.saveForm && Onboarding.saveForm();
+          location.href = "step4.html";
+        });
+      });
+    </script>
+  </body>
+</html>

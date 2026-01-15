@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Onboarding — Stap 6 | Publicatie & Afronding</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="logo">
+          <span class="logo-img" aria-hidden="true">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 64 64"
+              fill="none"
+              width="36"
+              height="36"
+            >
+              <rect width="64" height="64" rx="12" fill="#003f8a" />
+              <path
+                d="M16 36c4-8 12-12 20-12s16 4 20 12v6H16v-6z"
+                fill="#fff"
+                opacity="0.95"
+              />
+              <path
+                d="M24 28c0-4 8-8 8-8s8 4 8 8"
+                stroke="#6fd6ff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+          <span class="logo-text">Content Warrior</span>
+        </div>
+        <nav class="nav"><a href="step5.html">Terug</a></nav>
+      </div>
+    </header>
+
+    <main class="onboard-wrap">
+      <div class="progress"><i style="width: 0%"></i></div>
+      <div class="center small-muted progress-text">0%</div>
+
+      <div class="form-card">
+        <h2>Publicatie & Afronding</h2>
+        <p class="small-muted">
+          Call-to-action, visuele stijl, planning en overige wensen
+        </p>
+
+        <div class="field">
+          <label>Call-to-action (kort)</label>
+          <input
+            name="cta_text"
+            type="text"
+            placeholder="Bijv. Plan een intake"
+          />
+        </div>
+
+        <div class="field">
+          <label>Visuele stijl - wat mag getoond worden</label>
+          <textarea name="visual_allowed" rows="3"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Wat moet vermeden worden</label>
+          <textarea name="visual_forbidden" rows="2"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Contentkalender actief</label>
+          <select name="calendar_active">
+            <option value="">Kies...</option>
+            <option value="ja">Ja</option>
+            <option value="nee">Nee</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Frequentie per week</label>
+          <input name="frequency" type="text" placeholder="Bijv. 2" />
+        </div>
+
+        <div class="field">
+          <label>Publicatiedagen</label>
+          <input
+            name="publish_days"
+            type="text"
+            placeholder="Bijv. Ma, Wo, Vr"
+          />
+        </div>
+
+        <div class="field">
+          <label>Tijdstip</label>
+          <input name="publish_time" type="text" placeholder="Bijv. 10:00" />
+        </div>
+
+        <div class="field">
+          <label>Speciale wensen, vragen of opmerkingen</label>
+          <textarea name="notes" rows="3"></textarea>
+        </div>
+
+        <div class="footer-actions">
+          <a class="btn btn-outline" href="step5.html">Terug</a>
+          <a class="btn btn-primary" id="nextBtn" href="#">Volgende</a>
+        </div>
+      </div>
+    </main>
+
+    <script src="../js/onboarding.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        Onboarding.restore && Onboarding.restore();
+        Onboarding.setProgress && Onboarding.setProgress(6);
+        document.getElementById("nextBtn").addEventListener("click", (e) => {
+          e.preventDefault();
+          Onboarding.saveForm && Onboarding.saveForm();
+          // If you deploy the Apps Script webapp, place the URL below
+          const GOOGLE_SHEETS_URL =
+            "https://script.google.com/macros/s/PUT_YOUR_WEBAPP_ID/exec";
+          // Try to submit to the Google Sheets webapp (which will also send an email),
+          // but always proceed to thank you page regardless of remote success.
+          if (window.Onboarding && Onboarding.submitToGoogleSheet) {
+            Onboarding.submitToGoogleSheet(GOOGLE_SHEETS_URL, 6000).finally(
+              () => {
+                location.href = "thankyou.html";
+              }
+            );
+          } else if (window.Onboarding && Onboarding.submitToEndpoint) {
+            // fallback to any generic endpoint (e.g., Formspree)
+            const FORMSPREE_URL = "https://formspree.io/f/YOUR_FORM_ID";
+            Onboarding.submitToEndpoint(FORMSPREE_URL, 3500).finally(
+              () => (location.href = "thankyou.html")
+            );
+          } else {
+            location.href = "thankyou.html";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
